@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 // import './App.css'
 import './form.css'
-import Port from './portfolio'
+import Port from './form'
 
 
 function App() {
