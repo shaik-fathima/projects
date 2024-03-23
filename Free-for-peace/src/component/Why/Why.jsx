@@ -4,7 +4,7 @@ export default function Why() {
   return (
     <>
     <div className=' text-center my-5 '>
-        <h1 className='font-metal text-6xl text-slate-900 '>Occupation of isreil by jewish</h1>
+        <h1 className='font-metal text-6xl text-slate-900 '>Fight Back for Revenge </h1>
     </div>
     <div className='gap-y-96 inline-block'>
     <section className=' flex gap-5  m-16 mt-2 items-center justify-between'>
@@ -12,9 +12,9 @@ export default function Why() {
     <img src="https://media.licdn.com/dms/image/D4D12AQHwNiXyWpx5aw/article-inline_image-shrink_1500_2232/0/1697576704279?e=1715817600&v=beta&t=aqhxMbmk9rGDcq-KmuWOtueTDoFM1cRSZF6YBZz2Vl8" alt="" className='w-full h-96 border-2 border-black border-solid shadow-lg shadow-slate-900'/>
   
      <div className='font-sans font-medium'>     
-      <p>Israeil is a country of muslims where jewish occupie the
-         country and eliminate the muslim in 66 CE</p>
-         <p>In 7th Octomber 2023 Hamas attemp a sudden war on israeil  from Gaza strips where jewish 
+      <p>Israel has been providing Gaza with food, water, electricity, fuel, infrastructure supplies and other forms of aid for at least 15 years. 
+        <span className='text-1xl font-sans  text-green-800 font-bold'>They did that for free.</span> Even the hamas has started a war 
+         In 7th Octomber 2023  attemp a sudden war on israeil  from Gaza strips where jewish 
           celebrating the holiday, in this attack 1200 people of israeil was died.As Hamas says
           </p>
           <pre className=' font-serif p-5   rounded-lg shadow-black shadow-lg text-white bg-slate-800 leading-6' >

@@ -4,7 +4,7 @@ export default function What() {
   return (
     <>
     <div className=' text-center my-5 '>
-        <h1 className='font-metal text-6xl '>destruction of palestin</h1>
+        <h1 className='font-metal text-6xl '>Revenge on isreil by palestenian</h1>
     </div>
     
     <section className=' flex gap-5  m-16 mt-2 items-center justify-between'>
