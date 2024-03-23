@@ -5,7 +5,14 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        metal :["metal mania"],
+color:{
+  bgcol:[ "90deg, #020024 0%, #090979 35%, #00d4ff 100%" ]
+}
+      }
+    },
   },
   plugins: [],
 }
