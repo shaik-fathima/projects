@@ -92,7 +92,9 @@ function Contact() {
 
           <div className=' m-3 '>
             <button className=' ouline-none  bg-slate-200 lg:border-0 w-96  rounded-lg  font-metal text-3xl  lg:hover:bg-slate-600  lg:hover:text-white '
-            type='submit' value='submit'>submit</button>
+            type='submit' value='submit' onClick={()=>{
+              
+            }}>submit</button>
           </div>
          
 </Form> 

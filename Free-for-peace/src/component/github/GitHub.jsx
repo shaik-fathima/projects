@@ -1,36 +1,30 @@
-import React, { useEffect } from 'react';
-import {useLoaderData} from "react-router-dom"
+import React, { useEffect } from 'react'
 
-function Github() {
-
-    const data =  useLoaderData()
-        // const [data, setData] = React.useState(null);
-
-    // useEffect(() => {
-    //     fetch('https://api.github.com/users/Arun-cloud-dev')
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             console.log(data);
-    //             setData(data);
-    //         });
-    // }, []);
-
-    return (
-        <div className='text-center m-4 bg-gray-600 text-white p-4 text-3xl'>
-            {data && (
-                <>
-                    <p>Github followers: {data.followers}</p>
-                    <img src={data.avatar_url} width={300} alt='' />
-                </>
-            )}
-        </div>
-    );
+function GitHub() {
+    const [data, setdata]=React.useState(null)
+//react hooks where we use js functions
+useEffect(()=>{
+    fetch ("https://api.github.com/users/shaik-fathima")
+    .then ((response) => response.json())
+    .then((data)=> {
+        console.log(data)
+        setdata(data)
+    })
+},[ ])
+  return (
+   
+    <div className='bg-slate-900 text-white text-4xl text-center p-10'>
+      {data &&(
+        <>
+      <p>GitHub followers:{data.followers}</p>
+    <img src={data.avatar_url} width={300} alt="profile pic" />
+   
+    </>
+    )}
+    </div> 
+  )
 }
 
-export default Github;
+export default GitHub
 
 
-export const githubInfoLoader = async () => {
-    const response = await fetch('https://api.github.com/users/Arun-cloud-dev')
-    return response.json()
-}
