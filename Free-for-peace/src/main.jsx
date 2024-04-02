@@ -8,8 +8,8 @@ import What from './component/What/What.jsx'
 import Why from './component/Why/Why.jsx'
 import When from './component/When/When.jsx'
 import Contact from './component/Contact/Contact.jsx'
-import Github from './component/github/GitHub.jsx'
-import User from './component/User/User.jsx'
+import Github,  {githubInfoLoder} from './component/github/GitHub.jsx'
+import User  from './component/User/User.jsx'
 
 const main= createBrowserRouter ( createRoutesFromElements(
   <Route path='/' element={<Layout/>}>
@@ -22,7 +22,7 @@ const main= createBrowserRouter ( createRoutesFromElements(
     </Route>
 
   <Route>
-    <Route path="github" element={<Github/>}/>
+    <Route loader={githubInfoLoder} path="github" element={<Github/>}/>
    <Route path='*' element={<div>Github not found</div>}></Route>
  </Route>
  

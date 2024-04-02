@@ -1,54 +1,50 @@
-import React from 'react'
-import{Form} from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
 
 function Contact() {
-
-  function validation() {
-    let name = document.contactform.fullname.value;
-    let email = document.contactform.email.value;
-    let mobile = document.contactform.mobile.value;
-  
-  let nameerr = true;
-  let emailerr = true;
-  let mobileerr = true;
-  
-  
-  if (name == ""){
-    document.getElementById("NameErr").innerHTML="plese enter your name ";   
-    return false;
-  }else {
-    document.getElementById("NameErr").innerHTML= " ";
-    nameerr = false;
-  }
-  
-  if (email == ""){
-   document.getElementById("emailErr").innerHTML="plese enter your Email ";   
-     return false;
-  }else {
-   document.getElementById("emailErr").innerHTML= " ";
-    emailerr = false;
-  }
-  
-  if (mobile == ""){
-  document.getElementById("mobileErr").innerHTML="plese enter your mobile";
-  return false;
-  }else {
-  document.getElementById("mobileErr").innerHTML= "";
-  mobileerr = false;
-  }
-  
-  
-  if ((nameerr|| emailerr || mobileerr )== true){
-    return false;
-  }else{
-    console.log("Form submitted successfully ")
-  }
-  
-  }
+   const initiallvalue ={fullName:"", mobile:"", email:"" };
+   const [ formvalues , setformvalues] = useState(initiallvalue);
+   const [ formerror , setformerror] = useState({});
+   const [ IsSubmit , setIsSubmit] = useState(false);
 
 
-  
-  return (
+const handleChange =(e)=>{ 
+  const {name, value} =e.target;
+  setformvalues({...formvalues,[name]:value});
+};
+
+const handleSubmit=(e)=>{
+  e.PreventDefault();
+  setformerror(validate(formvalues));
+  setIsSubmit(true);
+}
+ useEffect (()=>{
+   console.log(formerror);
+  if(Object.keys(formerror).length === 0 && IsSubmit){
+     console.log(formvalues);
+   }
+ },[formerror]);
+
+
+
+const validate =(value)=>{
+ const error ={};
+const regex =/^[^/s@]+@[^\s@]+\.[^\s@]{2.}$/i;
+ if (!value.fullName){
+  error.fullName="pls enter your name";
+ }
+ if (!value.mobile){
+  error.mobile="pls enter your number";
+ }
+ if (!value.email){
+  error.email="pls enter your email";
+ }
+ return error;
+}
+
+
+
+
+     return (
     <>
     <div className=' bg-red-200  mx-64 my-5 p-10 '>
       <div className=' flex gap-5 '>
@@ -63,41 +59,63 @@ function Contact() {
           </div>
 
         </div>
-         
-      <Form 
-       className= ' justify-center p-2  bg-slate-400' name='contactform'  onSubmit={validation}>
+        <div>
         
+      <form 
+       className= ' justify-center p-2  bg-slate-400' name='contactform'
+       onSubmit={handleSubmit} >
+         {/* <pre>{JSON.stringify(formvalues, undefined,2)}</pre> */}
+        
+        {/* full name */}
            <div className=' m-3 '>
             <label className=' font-metal text-xl block '>Name</label>
-          <input type="text"  name="Fullname"  placeholder="Your Name" className=' ouline-none bg-slate-200  lg:border-0 w-96  p-1.5  rounded-lg  font-serif text-sm  lg:hover:bg-slate-300'  />
-         <div className='text-red-700 text-sm  p-0' id="NameErr">Enter your name </div>
+            <input type="text" name="fullName" placeholder='your name'
+          className=' ouline-none bg-slate-200 lg:border-0 w-96 p-1.5  rounded-lg  font-serif text-sm  lg:hover:bg-slate-300'
+               value={formvalues.fullName}
+               onChange={handleChange}        />
+         <div className='text-red-700 text-sm  p-0'>{formerror.fullName}</div>
+         
           </div>
-
+{/* mobile */}
           <div className=' m-3 '>
             <label htmlFor="" className='font-metal text-xl block '>Mobile</label>
-          <input type="number"  name='mobile' placeholder=' your mobile' className=' ouline-none bg-slate-200 lg:border-0 w-96 p-1.5  rounded-lg  font-serif text-sm  lg:hover:bg-slate-300'  />
-          <div className='text-red-700 text-sm ' id='mobileErr'></div>
+         
+          <input type="number"  name='mobile' placeholder=' your mobile'
+           className=' ouline-none bg-slate-200 lg:border-0 w-96 p-1.5  rounded-lg  font-serif text-sm  lg:hover:bg-slate-300'
+           value={formvalues.mobile} 
+           onChange={handleChange} />
+
+<div className='text-red-700 text-sm  p-0'>{formerror.mobile}</div>
           </div>
 
+{/*  email */}
           <div className=' m-3 '>
             <label htmlFor="" className=' font-metal text-xl block '>Email</label>
-          <input type="email" name='email' placeholder=" your Email" className=' ouline-none bg-slate-200  lg:border-0 w-96 p-1.5  rounded-lg  font-serif text-sm lg:hover:bg-slate-300 '  />
-          <div className='text-red-700 text-sm ' id='emailErr'></div>
+          <input type="email" name='email' placeholder=" your Email"
+           className=' ouline-none bg-slate-200  lg:border-0 w-96 p-1.5  rounded-lg  font-serif text-sm lg:hover:bg-slate-300 ' 
+           value={formvalues.email}
+           onChange={handleChange}  />
+         
+         <div className='text-red-700 text-sm  p-0'>{formerror.email}</div>
  </div>
-          
+          {/* comment */}
           <div className=' m-3 '>
             <label htmlFor="" className=' font-metal text-xl block '>Comment</label>
           <textarea name="comment" id="" cols="30" rows="10" placeholder='Suggest or comment your idea' className=' ouline-none  bg-slate-200  lg:border-0 w-96 h-24 p-3  rounded-lg  font-serif text-lg  lg:hover:bg-slate-300'  />
           </div>
-
+{/*  submit */}
           <div className=' m-3 '>
             <button className=' ouline-none  bg-slate-200 lg:border-0 w-96  rounded-lg  font-metal text-3xl  lg:hover:bg-slate-600  lg:hover:text-white '
-            type='submit' value='submit' onClick={()=>{
-              
-            }}>submit</button>
+            type='Submit'
+             value="submit"  
+             id='submit'
+             >
+
+              submit</button>
           </div>
          
-</Form> 
+</form> 
+</div>
 
       
 
